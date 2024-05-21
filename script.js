@@ -19,19 +19,16 @@ for ( var i=0; i < numberOfDrumButtons ; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         // alert("I got clicked");
 
-
-
-
-
 var toCheck =this.innerHTML;
 
-        //     switch satatement is work as same as if and elese statement \
-// here we use "   case "":   " to start the code and end with "break;"
-
       makeSound(toCheck)
+
+      buttonAnimation(toCheck);
         this.style.color="yellow";
     });
     }
+
+
 
     // we can also do the same thing from while loop..
     // numberOfDrumButtons= document.querySelectorAll(".drum").length;
@@ -44,9 +41,6 @@ var toCheck =this.innerHTML;
     //     i++;
     // }
 
-
-
-
 //...."this"..... tag  work as inspect button for javascript
 // console.log("this")
 // after typing this code we have to go  in console and just click
@@ -56,8 +50,6 @@ var toCheck =this.innerHTML;
 
 
 
-// contructor function - these are the function which work as  a table to store data 
-// there speical identity is there name has no use of cammle case
 
 // function BellBoy (name, age ,varifiedByHotel, workExperience, knownLanguage ){
 // this.name=name;
@@ -90,42 +82,63 @@ var toCheck =this.innerHTML;
 
 
 
+// contructor function - these are the function which work as  a table to store data 
+// there speical identity is there name has no use of cammle case
 
 document.addEventListener("keypress",function(event){
-makeSound(event.key);
+
+    makeSound(event.key);
+
+buttonAnimation(event.key);
 });
 function makeSound(key){
 
-    switch(key){
+    switch(key){       //     switch satatement is work as same as if and elese statement \
+                       // here we use "   case "":   " to start the code and end with "break;"
+        
         case "w": 
         var tom1= new Audio('tom-1.mp3');
         tom1.play();
         break;
+
         case "a":
             var tom2= new Audio('tom-2.mp3');
             tom2.play();
             break;
-           case "s":
-        var tom3= new Audio('tom-3.mp3');
-                tom3.play();
-                break; 
-                case "d":
+
+ case "s":
+ var tom3= new Audio('tom-3.mp3');
+   tom3.play();
+ break; 
+
+  case "d":
      var tom4= new Audio('tom-4.mp3');
-          tom4.play();
-                    break;
-         case "j":
-                     var snare= new Audio('snare.mp3');
-                        snare.play();
-                        break;
+ tom4.play();
+  break;
+
+  case "j":
+ var snare= new Audio('snare.mp3');
+         snare.play();
+        break;
+
      case "k":
-                            var kick= new Audio('kick-bass.mp3');
-                            kick.play();
-                            break;
+      var kick= new Audio('kick-bass.mp3');
+         kick.play();
+         break;
+
          case "l":
-                                var crash= new Audio('crash.mp3');
-                                crash.play();
-                                break;
+       var crash= new Audio('crash.mp3');
+     crash.play();
+     break;
     
         default: console.log(toCheck)
     }
 }
+function buttonAnimation(curruntKey){
+let activeButton= document.querySelector("."+ curruntKey);
+activeButton.classList.add("pressed"); 
+setTimeout(function(){
+activeButton.classList.remove("pressed") }, 100)
+// here we have to add time out to remove the class  and here 100 is in mili seconds means 0.1 seconds
+
+};
